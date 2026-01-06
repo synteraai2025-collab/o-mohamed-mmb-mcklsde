@@ -2,13 +2,13 @@ import ArabicHeroSection from '@/components/ArabicHeroSection'
 import ArabicProductGrid from '@/components/ArabicProductGrid'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     lang: string
-  }
+  }>
 }
 
-export default function ArabicLandingPage({ params }: PageProps) {
-  const { lang } = params
+export default async function ArabicLandingPage({ params }: PageProps) {
+  const { lang } = await params
 
   // Only render Arabic content for Arabic locale
   if (lang !== 'ar') {
@@ -42,3 +42,4 @@ export async function generateStaticParams() {
     // Add other supported locales here if needed
   ]
 }
+
